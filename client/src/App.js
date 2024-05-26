@@ -2,42 +2,44 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
 
+import getAuth from './helpers/getAuth';
+
 import './App.css';
+
 
 function App() {
 
+  const [email,setEmail] = useState('');
+  const [key,setKey] = useState('');
   const users = [
     {
       "email": "JohnSmith@email.com",
-      "key": ""
+      "key": "johnsmith"
+    },
+    {
+      "email": "JaneDoe@email.com",
+      "key": "janedoe"
+    },
+    {
+      "email": "BobbyLee@email.com",
+      "key": "bobbylee"
     }
   ];
-  const [email,setEmail] = useState('');
-  const [key,setKey] = useState('');
-
 
   const [authenticatedUser,setAuthenticatedUser] = useState(false);
-  const getAuthentication = () => {
-    for (let user in users) {
-      if (user.email === email){
-        if (user.key === key) {
-          setAuthenticatedUser(true);
-        }
-      }
-    }
-  };
- 
 
-  const notifyToast = () => {
-      toast.promise(
-          getAuthentication(),
-          {
-              loading: "Authenticating..",
-              success: <b>Login successful.</b>,
-              error: <b>Invalid email/password.</b>
-          }
-      );
-  }
+  const checkUserAuth = (e) => {
+    e.preventDefault();
+    // console.log(getAuth(users,email,key));
+    setAuthenticatedUser(getAuth(users,email,key));
+    console.log(authenticatedUser);
+
+    authenticatedUser ? (
+      toast.success("Successfully LoggedIn")
+    ) : (
+      toast.error("Invalid Email/Password")
+    )
+  };
 
 
   return (
@@ -47,13 +49,15 @@ function App() {
 
         {authenticatedUser ? (
 
-          <p>Content for authenticated users.</p>
+          <p className='container'>
+            Content for authenticated users.
+          </p>
 
         ) : (
 
           <div className="container ">
 
-            <form onSubmit={notifyToast}
+            <form onSubmit={checkUserAuth}
             className="input-form center-items"
             >
               <label className="label"
