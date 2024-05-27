@@ -1,13 +1,10 @@
 // import toast from "react-hot-toast";
 
 function getAuth (users, email, key) {
-    for (let currUser in users) {
+    for (let currUser of users) {
         
-        if (users[currUser].email === email){
-            
-            if (users[currUser].key === key) {
-                return true;
-            }
+        if (currUser.email === email && currUser.key === key){
+            return true;
         }
     }
     return false;

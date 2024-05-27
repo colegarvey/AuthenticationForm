@@ -11,34 +11,26 @@ function App() {
 
   const [email,setEmail] = useState('');
   const [key,setKey] = useState('');
+  const [authenticatedUser,setAuthenticatedUser] = useState(false);
+
   const users = [
-    {
-      "email": "JohnSmith@email.com",
-      "key": "johnsmith"
-    },
-    {
-      "email": "JaneDoe@email.com",
-      "key": "janedoe"
-    },
-    {
-      "email": "BobbyLee@email.com",
-      "key": "bobbylee"
-    }
+    {email: "JohnSmith@email.com",key: "johnsmith"},
+    {email: "JaneDoe@email.com",key: "janedoe"},
+    {email: "BobbyLee@email.com",key: "bobbylee"}
   ];
 
-  const [authenticatedUser,setAuthenticatedUser] = useState(false);
+  
 
   const checkUserAuth = (e) => {
     e.preventDefault();
-    // console.log(getAuth(users,email,key));
-    setAuthenticatedUser(getAuth(users,email,key));
-    console.log(authenticatedUser);
-
-    authenticatedUser ? (
-      toast.success("Successfully LoggedIn")
-    ) : (
-      toast.error("Invalid Email/Password")
-    )
+    const isAuthenticated = getAuth(users,email,key);
+    setAuthenticatedUser(isAuthenticated);
+    
+    if (isAuthenticated) {
+      toast.success("Successfully LoggedIn");
+    } else {
+      toast.error("Invalid Email/Password");
+    }
   };
 
 
@@ -48,14 +40,14 @@ function App() {
         <Toaster />
 
         {authenticatedUser ? (
-
-          <p className='container'>
-            Content for authenticated users.
+  
+          <p>
+            CONTENT
           </p>
 
         ) : (
 
-          <div className="container ">
+          <div className="container center-items">
 
             <form onSubmit={checkUserAuth}
             className="input-form center-items"
@@ -79,7 +71,11 @@ function App() {
               />
                 
                 
-              <button type="submit">Login</button>
+              <button type="submit"
+              id='LOGIN-BTN'
+              className='btn'
+                >Login
+              </button>
             </form>
           </div>
         )}

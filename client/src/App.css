@@ -1,7 +1,8 @@
 .App {
   text-align: center;
+  font-size: calc(10px + 1vh);
+  margin: 30vh auto;
 }
-
 
 .center-items {
   display: flex;
@@ -11,18 +12,45 @@
 }
 
 .input-form {
-  position: relative;
+  position: relative;  
+  width: 30vw;
+  height: 40vh;
+  border-radius: 15px;
+  border-style: outset;
+  background-color: black;
+  color: white;
 }
 
 .input {
+  width: 22vw;
+  height: 5.5vh;
   border: 1.5px solid black;
   border-radius: 7px;
   
   font-size: 15px;
+  background-color: lightgray;
   /* color: black; */
 }
 
-/* .label {
-  position: absolute;
-  left: 15px;
-} */
+.input:user-valid {
+  background-color: white;
+}
+
+.label {
+  align-self: baseline;
+  padding: 5px;
+  margin: 0px 4vw; 
+}
+
+#LOGIN-BTN {
+  align-self: flex-end;
+  margin: 10px 20px;
+  color: white;
+  /* font-size: calc(10px + 1vh); */
+}
+
+#LOGIN-BTN:hover {
+  outline: 1px solid white;
+  background-color: white;
+  color: black;
+}
