@@ -1,7 +1,13 @@
 .App {
   text-align: center;
   font-size: calc(10px + 1vh);
-  margin: 30vh auto;
+  
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+  margin: 28vh auto;
 }
 
 .center-items {
@@ -14,7 +20,7 @@
 .input-form {
   position: relative;  
   width: 30vw;
-  height: 40vh;
+  height: 45vh;
   border-radius: 15px;
   border-style: outset;
   background-color: black;
@@ -24,16 +30,16 @@
 .input {
   width: 22vw;
   height: 5.5vh;
-  border: 1.5px solid black;
+  border: 1.5px solid white;
   border-radius: 7px;
   
   font-size: 15px;
-  background-color: lightgray;
-  /* color: black; */
+  background-color: black;
+  color: white;
 }
 
 .input:user-valid {
-  background-color: white;
+  border: 1.5px solid greenyellow;
 }
 
 .label {

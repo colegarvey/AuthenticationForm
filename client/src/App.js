@@ -40,20 +40,23 @@ function App() {
         <Toaster />
 
         {authenticatedUser ? (
-  
-          <p>
-            CONTENT
-          </p>
+          
+          <div className='grid-center'>
+            <div>
+              <p>CONTENT</p>
+            </div>
+          </div>
 
         ) : (
 
-          <div className="container center-items">
-
+          <div className="grid-center">
             <form onSubmit={checkUserAuth}
             className="input-form center-items"
             >
+              <label><b>Login Template</b></label>
+
               <label className="label"
-              >Email
+                >Email
               </label>
               <input name="EMAIL" type="email" required
                   className="input p-2"
